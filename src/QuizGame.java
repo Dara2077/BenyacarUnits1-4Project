@@ -1,22 +1,22 @@
 import java.util.Scanner;
 
-public class Trivia {
+public class QuizGame {
     Scanner scan = new Scanner (System.in);
     private int numQuestions;
     private int count;
 
-    public Trivia(int numQuestions) {
+    public QuizGame(int numQuestions) {
         this.numQuestions = numQuestions;
     }
 
-    //Method for the math trivia
-    public void mathTrivia(){
+    //Method for the math quiz
+    public void mathQuiz(){
         int numOne = 0;
         int numTwo = 0;
         int userAnswer = 0;
         for (int i = 1; i <=numQuestions; i ++){
-            numOne = (int) (Math.random() *10) +1;
-            numTwo = (int) (Math.random() *10) +1;
+            numOne = (int) (Math.random() *20) +1;
+            numTwo = (int) (Math.random() *20) +1;
             String operator = chooseOperator();
             int answer = solveProblem(numOne, numTwo, operator);
             if (operator.equals("/")){
@@ -28,10 +28,10 @@ public class Trivia {
             userAnswer = scan.nextInt();
             if (userAnswer == answer){
                 count ++;
-                System.out.println("You got that question right, so your score increases by one");
+                System.out.println("Correct!");
             }
             else {
-                System.out.println("Sorry, that's not correct. Your score remains at " + count);
+                System.out.println("Incorrect");
             }
         }
     }
@@ -41,7 +41,7 @@ public class Trivia {
         return count;
     }
 
-    //Chooses operator for math trivia
+    //Chooses operator for math quiz
     public String chooseOperator(){
         int randomNum = (int)(Math.random() *4) +1;
         if (randomNum == 1){
@@ -58,7 +58,7 @@ public class Trivia {
         }
     }
 
-    //Solves math problem based on operator for math trivia
+    //Solves math problem based on operator for math quiz
     public int solveProblem(int numOne, int numTwo, String operator){
         if (operator.equals("+")){
             return numOne + numTwo;
@@ -74,6 +74,12 @@ public class Trivia {
         }
     }
 
+    public void EnglishQuiz (){
+        String[] javaWords = {"Method", "Class", "Boolean", "Conditional", "Iteration", "Loop", "IDE", "Semicolon", "Parameter", "Constructor"};
+        String[] sportsWords = {"baseball", "football", "soccer", "basketball", "basket", "goal", "helmet", "cleats", "jersey", "layup"};
+        String[] stateWords = {"Alaska", "California", "Florida", "Georgia", "Hawaii", "Maryland", "Michigan", "Nevada", "Pennsylvania", "Vermont"};
+
+    }
 }
 
 
