@@ -22,7 +22,16 @@ public class QuizRunner {
             myQuiz.mathQuiz();
         }
         else if (quizType.equals("English") || quizType.equals("english")){
-            return;
+            System.out.print("What theme do you want your quiz words to have? Choose between Java, sports, states, or colors! ");
+            String englishType = scan.nextLine();
+            while (!(englishType.equals("Java") || englishType.equals("java") || englishType.equals("Sports") || englishType.equals("sports") || englishType.equals("States") || englishType.equals("states") || englishType.equals("Colors") || englishType.equals("colors"))){
+                System.out.print("Your answer isn't one of the options! Try again: ");
+                englishType = scan.nextLine();
+            }
+            englishType = englishType.toLowerCase();
+            if (englishType.equals("Java") || englishType.equals("java"))
+            myQuiz.englishQuiz({"Method", "Class", "Boolean", "Conditional", "Iteration", "Loop", "IDE", "Semicolon", "Parameter", "Constructor"});
+            //This has a lot of errors rn...
         }
         else{
             while (!(quizType.equals("Math") || quizType.equals("math") || quizType.equals("English") || quizType.equals("english"))) {

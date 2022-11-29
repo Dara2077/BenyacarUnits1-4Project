@@ -31,7 +31,7 @@ public class QuizGame {
                 System.out.println("Correct!");
             }
             else {
-                System.out.println("Incorrect");
+                System.out.println("Incorrect. The answer is " + answer);
             }
         }
     }
@@ -73,12 +73,117 @@ public class QuizGame {
             return numOne/numTwo;
         }
     }
+    public void englishQuiz(String[] input){
 
-    public void EnglishQuiz (){
-        String[] javaWords = {"Method", "Class", "Boolean", "Conditional", "Iteration", "Loop", "IDE", "Semicolon", "Parameter", "Constructor"};
-        String[] sportsWords = {"baseball", "football", "soccer", "basketball", "basket", "goal", "helmet", "cleats", "jersey", "layup"};
-        String[] stateWords = {"Alaska", "California", "Florida", "Georgia", "Hawaii", "Maryland", "Michigan", "Nevada", "Pennsylvania", "Vermont"};
+    }
+    public void javaQuiz (String[] input){
+        String[] java = {"Method", "Class", "Boolean", "Conditional", "Iteration", "Loop", "IDE", "Semicolon", "Parameter", "Constructor"};
+        for (int i = 0; i <=numQuestions; i++){
+            String question = pickEnglishQuestion();
+            String word = java[i];
+            int answer = findEnglishAnswer(question, word);
+            System.out.print("How many " + question + " are in " + word + "?" );
+            int userAnswer = scan.nextInt();
+            if (answer == userAnswer){
+                System.out.println("Correct!");
+                count ++;
+            }
+            else{
+                System.out.println("Incorrect. The answer is " + answer);
+            }
+        }
+    }
 
+    public void sportsQuiz(){
+        String[] sports = {"Baseball", "Football", "Soccer", "Basketball", "Basket", "Goal", "Helmet", "Cleats", "Jersey", "Layup"};
+        for (int i = 0; i <=numQuestions; i++){
+            String question = pickEnglishQuestion();
+            String word = sports[i];
+            int answer = findEnglishAnswer(question, word);
+            System.out.print("How many " + question + " are in " + word + "?" );
+            int userAnswer = scan.nextInt();
+            if (answer == userAnswer){
+                System.out.println("Correct!");
+                count ++;
+            }
+            else{
+                System.out.println("Incorrect. The answer is " + answer);
+            }
+        }
+
+    }
+
+    public void statesQuiz(){
+        String[] states = {"Alaska", "California", "Florida", "Georgia", "Hawaii", "Maryland", "Michigan", "Nevada", "Pennsylvania", "Vermont"};
+        for (int i = 0; i <=numQuestions; i++){
+            String question = pickEnglishQuestion();
+            String word = states[i];
+            int answer = findEnglishAnswer(question, word);
+            System.out.print("How many " + question + " are in " + word + "?" );
+            int userAnswer = scan.nextInt();
+            if (answer == userAnswer){
+                System.out.println("Correct!");
+                count ++;
+            }
+            else{
+                System.out.println("Incorrect. The answer is " + answer);
+            }
+        }
+    }
+
+    public void colorsQuiz(){
+        String[] colors = {"Red", "Orange", "Yellow", "Green", "Blue", "Indigo", "Violet", "Turquoise", "Gold", "Purple"};
+        for (int i = 0; i <=numQuestions; i++){
+            String question = pickEnglishQuestion();
+            String word = colors[i];
+            int answer = findEnglishAnswer(question, word);
+            System.out.print("How many " + question + " are in " + word + "?" );
+            int userAnswer = scan.nextInt();
+            if (answer == userAnswer){
+                System.out.println("Correct!");
+                count ++;
+            }
+            else{
+                System.out.println("Incorrect. The answer is " + answer);
+            }
+        }
+    }
+
+
+    public String pickEnglishQuestion(){
+        int randomNum = (int)(Math.random() * 2 + 1);
+        if (randomNum == 1){
+            return "vowels";
+        }
+        else{
+            return "consonants";
+        }
+    }
+
+    public int findEnglishAnswer(String question, String word){
+        if (question.equals("vowels")){
+            return vowelCounter(word);
+        }
+        else{
+            return consonantCounter(word);
+        }
+    }
+
+    public int vowelCounter(String str){
+        int count = 0;
+        for (int i = 0; i < str.length(); i++){
+            if (str.substring(i, i+1).equals("a") || str.substring(i, i+1).equals("e") || str.substring(i, i+1).equals("i") || str.substring(i, i+1).equals("o") || str.substring(i, i+1).equals("u")){
+                count ++;
+            }
+        }
+        return count;
+    }
+
+    public int consonantCounter(String str){
+        int count = 0;
+        int numVowels = vowelCounter(str);
+        int lengthStr = str.length();
+        return lengthStr - numVowels;
     }
 }
 
