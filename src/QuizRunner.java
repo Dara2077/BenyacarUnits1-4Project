@@ -18,28 +18,39 @@ public class QuizRunner {
         //Ask user what trivia topic they want
         System.out.print("Do you want trivia on Math or English? ");
         String quizType = scan.nextLine();
+        while (!(quizType.equals("Math") || quizType.equals("math") || quizType.equals("English") || quizType.equals("english"))) {
+            System.out.print("Your answer isn't one of the options! Try again: ");
+            quizType = scan.nextLine();
+        }
         if(quizType.equals("Math") || quizType.equals("math")){
             myQuiz.mathQuiz();
         }
         else if (quizType.equals("English") || quizType.equals("english")){
             System.out.print("What theme do you want your quiz words to have? Choose between Java, sports, states, or colors! ");
             String englishType = scan.nextLine();
-            while (!(englishType.equals("Java") || englishType.equals("java") || englishType.equals("Sports") || englishType.equals("sports") || englishType.equals("States") || englishType.equals("states") || englishType.equals("Colors") || englishType.equals("colors"))){
+            englishType = englishType.toLowerCase();
+            while (!(englishType.equals("java") || englishType.equals("sports") || englishType.equals("states") || englishType.equals("colors"))){
                 System.out.print("Your answer isn't one of the options! Try again: ");
                 englishType = scan.nextLine();
             }
-            englishType = englishType.toLowerCase();
-            if (englishType.equals("Java") || englishType.equals("java"))
-            myQuiz.englishQuiz({"Method", "Class", "Boolean", "Conditional", "Iteration", "Loop", "IDE", "Semicolon", "Parameter", "Constructor"});
-            //This has a lot of errors rn...
-        }
-        else{
-            while (!(quizType.equals("Math") || quizType.equals("math") || quizType.equals("English") || quizType.equals("english"))) {
-                System.out.print("Your answer isn't one of the options! Try again: ");
-                quizType = scan.nextLine();
+            if (englishType.equals("java")){
+                String[] myArray = {"Method", "Class", "Boolean", "Conditional", "Iteration", "Loop", "IDE", "Semicolon", "Parameter", "Constructor"};
+                myQuiz.englishQuiz(myArray);
+            }
+            else if(englishType.equals("sports")){
+                String[] myArray = {"Baseball", "Football", "Soccer", "Basketball", "Basket", "Goal", "Helmet", "Cleats", "Jersey", "Layup"};
+                myQuiz.englishQuiz(myArray);
+            }
+            else if(englishType.equals("states")){
+                String[] myArray = {"Alaska", "California", "Florida", "Georgia", "Hawaii", "Maryland", "Michigan", "Nevada", "Pennsylvania", "Vermont"};
+                myQuiz.englishQuiz(myArray);
+            }
+            else if(englishType.equals("colors")){
+                String[] myArray = {"Red", "Orange", "Yellow", "Green", "Blue", "Indigo", "Violet", "Turquoise", "Gold", "Purple"};
+                myQuiz.englishQuiz(myArray);
             }
         }
 
-        System.out.println("Thanks for playing! You finished with a score of " + myQuiz.getCount() + " out of " + numQuestions + "!");
+        System.out.println("Thanks for playing! You finished with a score of " + myQuiz.getScore() + " out of " + numQuestions + "!");
     }
 }
