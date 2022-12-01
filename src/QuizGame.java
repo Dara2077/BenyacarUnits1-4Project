@@ -13,17 +13,30 @@ public class QuizGame {
     private int score;
 
     /**
-     * Constructor for the person class. This creates a new instance of a QuizGame
+     * Constructor for the QuizGame class. This creates a new instance of a QuizGame
      * given the below parameter
      *
-     * @param numQuestions an integer representing the number of questions the user wantd to answer
+     * @param numQuestions - an integer representing the number of questions the user wants to answer
      */
     public QuizGame(int numQuestions) {
         this.numQuestions = numQuestions;
     }
 
     /**
-     * mathQuiz method for the QuizGame class. If the user chooses to play the math game,
+     * Constructor for the QuizGame class. This creates a new instance of a QuizGame.
+     * It does not have any parameters because it will randomly choose the number of questions the user answers.
+     * So, there's no need for user input
+     */
+    public QuizGame(){
+        int randomNum = (int) (Math.random() *10 + 1);
+        this.numQuestions = randomNum;
+    }
+
+    public String toString(){
+        return "You will be asked " + getNumQuestions() + " questions";
+    }
+    /**
+     * If the user chooses to play the math game,
      * this method will cause the user to answer randomized math questions involving different operations
      */
     public void mathQuiz(){
@@ -53,7 +66,7 @@ public class QuizGame {
     }
 
     /**
-     * the getScore method will give what the user's score is
+     * Gets the user's score
      * @return returns the integer value of the score parameter
      */
 
@@ -62,7 +75,15 @@ public class QuizGame {
     }
 
     /**
-     * chooseOperator uses the math class to select a random number from one to four.
+     * Gets the number of questions the user will be asked
+     * @return returns the integer value of the numQuestions parameter
+     */
+    public int getNumQuestions(){
+        return numQuestions;
+    }
+
+    /**
+     * Uses the math class to select a random number from one to four.
      * Each number from one to four corresponds to an operator, and the operator the number corresponds to will be the
      * operator used in a math question for the math quiz. It is used for all the math questions so that there is a random operator each time.
      * For example, if the user inputted that the want to be asked four math questions, this method will run four times.
@@ -85,11 +106,11 @@ public class QuizGame {
     }
 
     /**
-     * solveProblem identifies the operator being used for the given problem, as well as the two numbers involved, and solves the problem accordingly.
+     * Identifies the operator being used for the given problem, as well as the two numbers involved, and solves the problem accordingly.
      * For example, if numOne is 3 and numTwo is 5 and the operator is +, the solution will be 8.
-     * @param numOne an integer representing the first number of the calculation
-     * @param numTwo an integer representing the second number of the calculation
-     * @param operator a String representing the operator used in the calculation
+     * @param numOne - an integer representing the first number of the calculation
+     * @param numTwo - an integer representing the second number of the calculation
+     * @param operator - a String representing the operator used in the calculation
      * @return returns the appropriate solution to the problem based on the numbers and operator.
      */
     public int solveProblem(int numOne, int numTwo, String operator){
@@ -107,8 +128,14 @@ public class QuizGame {
         }
     }
 
-    public void englishQuiz(String[] input){
-        String[] myArray = input;
+    /** If the user chooses to play the English Quiz game, the user will be asked
+     * questions relating to English.
+     *
+     * @param array - An array that corresponds to the theme the user has chosen for their English question. For example, if the user has chosen Java, the array will contain String literals related to Java.
+     *
+     */
+    public void englishQuiz(String[] array){
+        String[] myArray = array;
         for (int i = 0; i <numQuestions; i++){
             String question = pickEnglishQuestion();
             String word = myArray[i];
@@ -126,6 +153,11 @@ public class QuizGame {
 
     }
 
+    /** Uses the Math class to randomly pick between one or two. Based on the number, the user will be asked to find
+     * either the number of vowels or consonants in the word. This is because this method is used in the englishQuiz method.
+     *
+     * @return returns either "vowels" or "consonants" to indicate what the user will be asked for
+     */
     public String pickEnglishQuestion(){
         int randomNum = (int)(Math.random() * 2 + 1);
         if (randomNum == 1){
@@ -136,8 +168,15 @@ public class QuizGame {
         }
     }
 
+    /** Given what the user is being asked for in a given word, this method finds the correct answer
+     *
+     * @param question - a String representing what the user is being asked for
+     * @param word - a String representing what word the user is being asked about
+     * @return returns the appropriate answer to the question based on the parameters
+     */
     public int findEnglishAnswer(String question, String word){
-        if (question.equals("vowels")){
+        boolean vowels = question.equals("vowels");
+        if (vowels){
             return vowelCounter(word);
         }
         else{
@@ -145,6 +184,11 @@ public class QuizGame {
         }
     }
 
+    /** Counts the number of vowels in a String
+     *
+     * @param str - String that the method determines how many vowels are in
+     * @return returns the amount of vowels in the given String
+     */
     public int vowelCounter(String str){
         str = str.toLowerCase();
         int count = 0;
@@ -156,6 +200,11 @@ public class QuizGame {
         return count;
     }
 
+    /** Counts the number of consonants in a String
+     *
+     * @param str - String that the method determines how many consonants are in
+     * @return returns the amount of consonants in the given String
+     */
     public int consonantCounter(String str){
         int numVowels = vowelCounter(str);
         int lengthStr = str.length();

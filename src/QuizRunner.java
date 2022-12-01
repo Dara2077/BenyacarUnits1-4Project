@@ -4,16 +4,22 @@ public class QuizRunner {
     public static void main(String[] args){
         Scanner scan = new Scanner(System.in);
         //Asks user how many quiz questions they want to answer
-        System.out.print("How many questions do you want? (1-10): ");
+        System.out.print("How many questions do you want? (1-10). Or, if you want the computer to choose for you, enter 0: ");
         int numQuestions = scan.nextInt();
-        while (!(numQuestions >0 && numQuestions<=10)){
-            System.out.print("That's not a number from 1-10! Enter one that is: ");
-            numQuestions = scan.nextInt();
+        QuizGame myQuiz;
+        if (numQuestions == 0){
+            myQuiz = new QuizGame();
+            System.out.println(myQuiz.toString());
+        }
+        else{
+            while (!(numQuestions >0 && numQuestions<=10)){
+                System.out.print("That's not a number from 1-10! Enter one that is: ");
+                numQuestions = scan.nextInt();
+            }
+            //Create new quiz object
+            myQuiz = new QuizGame(numQuestions);
         }
         scan.nextLine(); //Clearing \n
-
-        //Create new quiz object
-        QuizGame myQuiz = new QuizGame(numQuestions);
 
         //Ask user what trivia topic they want
         System.out.print("Do you want trivia on Math or English? ");
@@ -51,6 +57,6 @@ public class QuizRunner {
             }
         }
 
-        System.out.println("Thanks for playing! You finished with a score of " + myQuiz.getScore() + " out of " + numQuestions + "!");
+        System.out.println("Thanks for playing! You finished with a score of " + myQuiz.getScore() + " out of " + myQuiz.getNumQuestions() + "!");
     }
 }
