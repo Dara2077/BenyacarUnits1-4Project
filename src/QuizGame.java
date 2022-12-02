@@ -32,6 +32,10 @@ public class QuizGame {
         this.numQuestions = randomNum;
     }
 
+    /**
+     * Gets the number of questions the user will answer, formatted correctly
+     * @return returns the number of questions the user will answer in a formatted sentence
+     */
     public String toString(){
         return "You will be asked " + getNumQuestions() + " questions";
     }
@@ -67,16 +71,15 @@ public class QuizGame {
 
     /**
      * Gets the user's score
-     * @return returns the integer value of the score parameter
+     * @return returns the integer value of the score instance variable
      */
-
     public int getScore(){
         return score;
     }
 
     /**
      * Gets the number of questions the user will be asked
-     * @return returns the integer value of the numQuestions parameter
+     * @return returns the integer value of the numQuestions instance variable
      */
     public int getNumQuestions(){
         return numQuestions;
@@ -135,10 +138,9 @@ public class QuizGame {
      *
      */
     public void englishQuiz(String[] array){
-        String[] myArray = array;
         for (int i = 0; i <numQuestions; i++){
             String question = pickEnglishQuestion();
-            String word = myArray[i];
+            String word = array[i];
             int answer = findEnglishAnswer(question, word);
             System.out.print("How many " + question + " are in \"" + word + "\"? ");
             int userAnswer = scan.nextInt();
