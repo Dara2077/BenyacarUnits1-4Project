@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class QuizRunner {
+public class QuizGameRunner {
     public static void main(String[] args){
         Scanner scan = new Scanner(System.in);
         //Asks user how many quiz questions they want to answer
