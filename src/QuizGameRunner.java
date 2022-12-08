@@ -21,8 +21,8 @@ public class QuizGameRunner {
         }
         scan.nextLine(); //Clearing \n
 
-        //Ask user what trivia topic they want
-        System.out.print("Do you want trivia on Math or English? ");
+        //Ask user what quiz topic they want
+        System.out.print("Do you want a quiz on Math or English? ");
         String quizType = scan.nextLine();
         while (!(quizType.equals("Math") || quizType.equals("math") || quizType.equals("English") || quizType.equals("english"))) {
             System.out.print("Your answer isn't one of the options! Try again: ");
